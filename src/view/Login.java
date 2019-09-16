@@ -1,11 +1,12 @@
 package view;
 
 import controller.LoginController;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JPanel {
 
-    private LoginController loginController;
-    private Tela tela;
+    private final LoginController loginController;
+    private final Tela tela;
 
     public Login(Tela tela) {
         this.loginController = new LoginController();
@@ -74,8 +75,10 @@ public class Login extends javax.swing.JPanel {
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
         boolean sucesso = this.loginController.efetuarLogin(this.jTextFieldLogin.getText(), jPasswordFieldSenha.getText());
         if (sucesso) {
+            JOptionPane.showMessageDialog(null, "Logado com sucesso!");
             this.tela.irPara("ListarContatos");
         } else {
+            JOptionPane.showMessageDialog(null, "Usuário ou Senha invalidos!");
             System.out.println("Erro");
         }
     }//GEN-LAST:event_jButtonEntrarActionPerformed

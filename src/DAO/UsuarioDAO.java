@@ -90,7 +90,7 @@ public class UsuarioDAO {
                 usuario.setSenha(rs.getString("senha"));
             }
 
-            System.out.println(usuario.toString());
+//            System.out.println(usuario.toString());
 
             stmt.close();
             rs.close();
@@ -119,7 +119,7 @@ public class UsuarioDAO {
                 usuario.setId(rs.getLong("id"));
                 usuario.setLogin(rs.getString("login"));
                 usuario.setSenha(rs.getString("senha"));
-                System.out.println(usuario.toString());
+//                System.out.println(usuario.toString());
             }
 
             stmt.close();
@@ -149,7 +149,7 @@ public class UsuarioDAO {
                 usuario.setLogin(rs.getString("login"));
                 usuario.setSenha(rs.getString("senha"));
                 lista.add(usuario);
-                System.out.println(usuario.toString());
+//                System.out.println(usuario.toString());
             }
 
             stmt.close();

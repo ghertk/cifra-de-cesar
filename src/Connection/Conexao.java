@@ -10,23 +10,18 @@ public class Conexao {
 
     public static Connection obterConexao() throws Exception {
         try {
-
             String url = "jdbc:postgresql://localhost:5432/cifradecesar";
             String usuario = "postgres";
             String senha = "postgres";
 
             Class.forName("org.postgresql.Driver");
 
-            Connection con = null;
+            conexao = DriverManager.getConnection(url, usuario, senha);
 
-            con = DriverManager.getConnection(url, usuario, senha);
-
-            System.out.println("Conexão realizada com sucesso.");
+            return conexao;
             
         } catch (ClassNotFoundException | SQLException e) {
             throw e;
         }
-        
-        return null;
     }
 }
