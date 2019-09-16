@@ -5,17 +5,15 @@ public class CifraDeCesar {
     private final int CHAVE_CRIPTOGRAFIA = 27;
     private final char[] alfabeto;
     private final char[] alfabetoCriptografado;
-    private final char offset = 'a';
+    private final char offset = ' ';
 
     public CifraDeCesar() {
-        alfabeto = new char[26];
+        alfabeto = new char[95];
         for (int i = 0; i < alfabeto.length; i++) {
             alfabeto[i] = (char) (offset + i);
+            System.out.print(alfabeto[i]);
         }
-        alfabetoCriptografado = new char[]{
-            'c', 'e', 'd', 'q', 'n', 'j', 'b', 'f', 'w', 'g', 'v', 'l', 'i',
-            'o', 'x', 'h', 'a', 'm', 't', 'r', 's', 'u', 'y', 'k', 'p', 'z'
-        };
+        alfabetoCriptografado = "lS&oLaf M\",jpBsei<{D3dI\\A_ZgU-c[bhHt!Nv8RY0.WqyF/2|?$145>*X7r6%^C`xQ9zE@P'kw)JOVGT(]u;m=:#nK+}".toCharArray();
     }
 
     public String criptografar(String conteudo) {
