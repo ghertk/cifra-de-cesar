@@ -2,10 +2,16 @@ package principal;
 
 import Connection.Conexao;
 import cifradecesar.CifraDeCesar;
+import view.Tela;
 
 public class Principal {
 
     public static void main(String[] args) throws Exception {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Tela().setVisible(true);
+            }
+        });
 
         System.out.println("********************");
         System.out.println("** Cifra de César **");
@@ -29,7 +35,7 @@ public class Principal {
         System.out.println(mensagemDescriptografada);
         System.out.println("-----------------------");
         
-        Conexao.obterConexao();
+        //Conexao.obterConexao();
     }
 
 }

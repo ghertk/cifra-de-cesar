@@ -17,6 +17,6 @@ public class LoginController {
         String senhaCriptografada = this.cifraDeCesar.criptografar(senha);
         
 //        this.usuarioDAO.buscarPorLoginSenha(loginCriptografado, senhaCriptografada);
-        return false;
+        return true;
     }
 }
