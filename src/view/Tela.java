@@ -5,13 +5,15 @@ import java.awt.CardLayout;
 public class Tela extends javax.swing.JFrame {
 
     private CardLayout cardLayout;
+    private ListarContatos listarContatos;
 
     public Tela() {
         initComponents();
         this.cardLayout = (CardLayout) new CardLayout();
         this.jPanelPrincipal.setLayout(cardLayout);
         this.jPanelPrincipal.add(new Login(this), "Login");
-        this.jPanelPrincipal.add(new ListarContatos(this), "ListarContatos");
+        this.listarContatos = new ListarContatos(this);
+        this.jPanelPrincipal.add(this.listarContatos, "ListarContatos");
         this.jPanelPrincipal.add(new CadastroContato(this), "CadastroContato");
         this.jPanelPrincipal.add(new CadastroUsuario(this), "CadastroUsuario");
         this.cardLayout.show(jPanelPrincipal, "Login");
@@ -49,5 +51,9 @@ public class Tela extends javax.swing.JFrame {
     void irPara(String nome) {
 //        this.cardLayout.next(jPanelPrincipal);
         this.cardLayout.show(jPanelPrincipal, nome);
+    }
+
+    void atualizar() {
+        this.listarContatos.atualizarTabela();
     }
 }

@@ -5,6 +5,15 @@
  */
 package view;
 
+import DAO.ContatoDAO;
+import DAO.UsuarioDAO;
+import cifradecesar.CifraDeCesar;
+import controller.ContatoController;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import model.Contato;
+
 /**
  *
  * @author ghert
@@ -12,13 +21,22 @@ package view;
 public class CadastroContato extends javax.swing.JPanel {
 
     private Tela tela;
+    private ContatoController contatoController;
 
     /**
      * Creates new form CadastroContato
      */
     public CadastroContato(Tela tela) {
         initComponents();
+        this.contatoController = new ContatoController();
         this.tela = tela;
+    }
+
+    private void limparCampos() {
+        this.jTextFieldNome.setText("");
+            this.jTextFieldEmail.setText("");
+            this.jTextFieldCelular.setText("");
+            this.jTextFieldCidade.setText("");
     }
 
     /**
@@ -39,7 +57,7 @@ public class CadastroContato extends javax.swing.JPanel {
         jTextFieldCelular = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
         jButtonSalvar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonVoltar = new javax.swing.JButton();
 
         jLabelNome.setText("Nome:");
 
@@ -56,10 +74,10 @@ public class CadastroContato extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonVoltarActionPerformed(evt);
             }
         });
 
@@ -85,7 +103,7 @@ public class CadastroContato extends javax.swing.JPanel {
                                 .addComponent(jTextFieldEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)))
                         .addGap(0, 8, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jButtonVoltar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonSalvar)))
                 .addContainerGap())
@@ -112,28 +130,35 @@ public class CadastroContato extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalvar)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonVoltar))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        boolean sucesso = true;
-        if (sucesso) {
-            tela.irPara("ListarContatos");
-        } else {
-            System.out.println("Erro");
+        String nome = this.jTextFieldNome.getText();
+        String email = this.jTextFieldEmail.getText();
+        String celular = this.jTextFieldCelular.getText();
+        String cidade = this.jTextFieldCidade.getText();
+        
+        try {
+            this.contatoController.criarContato(nome, celular, cidade, email);
+            this.tela.atualizar();
+            this.limparCampos();
+            this.tela.irPara("ListarContatos");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar contato!");
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        this.limparCampos();
         tela.irPara("ListarContatos");
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabelCelular;
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelEmail;

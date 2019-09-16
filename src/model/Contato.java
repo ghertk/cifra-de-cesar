@@ -19,6 +19,13 @@ public class Contato {
         this.email = email;
     }
 
+    public Contato(String nome, String celular, String cidade, String email) {
+        this.nome = nome;
+        this.celular = celular;
+        this.cidade = cidade;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }
