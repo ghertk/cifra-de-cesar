@@ -2,6 +2,7 @@ package model;
 
 public class Contato {
 
+    private Long id;
     private String nome;
     private String celular;
     private String cidade;
@@ -10,13 +11,22 @@ public class Contato {
     public Contato() {
     }
 
-    public Contato(String nome, String celular, String cidade, String email) {
+    public Contato(Long id, String nome, String celular, String cidade, String email) {
+        this.id = id;
         this.nome = nome;
         this.celular = celular;
         this.cidade = cidade;
         this.email = email;
     }
-    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -49,4 +59,8 @@ public class Contato {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "Contato{" + "id=" + id + ", nome=" + nome + ", celular=" + celular + ", cidade=" + cidade + ", email=" + email + '}';
+    }
 }
