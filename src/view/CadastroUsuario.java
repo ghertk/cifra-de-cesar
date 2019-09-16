@@ -5,6 +5,8 @@
  */
 package view;
 
+import controller.CadastroController;
+
 /**
  *
  * @author ghert
@@ -12,6 +14,8 @@ package view;
 public class CadastroUsuario extends javax.swing.JPanel {
 
     private Tela tela;
+    
+    private CadastroController controller;
 
     /**
      * Creates new form CadastroUsuario
@@ -19,6 +23,7 @@ public class CadastroUsuario extends javax.swing.JPanel {
     public CadastroUsuario(Tela tela) {
         initComponents();
         this.tela = tela;
+        this.controller = new CadastroController();
     }
 
     /**
@@ -96,6 +101,9 @@ public class CadastroUsuario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        
+        this.controller.inserirNovoUsuario(this.jTextFieldLogin.getText(), this.jTextFieldSenha.getText());
+        
         tela.irPara("ListarContatos");
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 

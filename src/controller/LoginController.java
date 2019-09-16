@@ -20,11 +20,7 @@ public class LoginController {
             String loginCriptografado = this.cifraDeCesar.criptografar(login);
             String senhaCriptografada = this.cifraDeCesar.criptografar(senha);
 
-            System.out.println(login);
-            System.out.println(senha);
-
             Usuario usuario = this.usuarioDAO.buscarPorLoginSenha(loginCriptografado, senhaCriptografada);
-//            Usuario usuario = this.usuarioDAO.buscarPorLoginSenha(login, senha);
 
             if (usuario != null) {
                 return true;
