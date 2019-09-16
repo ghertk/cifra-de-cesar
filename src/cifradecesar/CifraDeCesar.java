@@ -8,10 +8,9 @@ public class CifraDeCesar {
     private final char offset = ' ';
 
     public CifraDeCesar() {
-        alfabeto = new char[95];
+        alfabeto = new char[94];
         for (int i = 0; i < alfabeto.length; i++) {
             alfabeto[i] = (char) (offset + i);
-            System.out.print(alfabeto[i]);
         }
         alfabetoCriptografado = "lS&oLaf M\",jpBsei<{D3dI\\A_ZgU-c[bhHt!Nv8RY0.WqyF/2|?$145>*X7r6%^C`xQ9zE@P'kw)JOVGT(]u;m=:#nK+}".toCharArray();
     }
