@@ -1,31 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-import DAO.ContatoDAO;
-import DAO.UsuarioDAO;
-import cifradecesar.CifraDeCesar;
 import controller.ContatoController;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import model.Contato;
 
-/**
- *
- * @author ghert
- */
 public class CadastroContato extends javax.swing.JPanel {
 
     private Tela tela;
     private ContatoController contatoController;
 
-    /**
-     * Creates new form CadastroContato
-     */
     public CadastroContato(Tela tela) {
         initComponents();
         this.contatoController = new ContatoController();

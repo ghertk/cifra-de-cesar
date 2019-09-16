@@ -1,7 +1,7 @@
 package controller;
 
 import cifradecesar.CifraDeCesar;
-import DAO.UsuarioDAO;
+import dao.UsuarioDAO;
 import javax.swing.JOptionPane;
 import model.Usuario;
 

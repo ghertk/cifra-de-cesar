@@ -1,29 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.CadastroController;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author ghert
- */
 public class CadastroUsuario extends javax.swing.JPanel {
 
     private Tela tela;
-    
     private CadastroController controller;
 
-    /**
-     * Creates new form CadastroUsuario
-     */
     public CadastroUsuario(Tela tela) {
         initComponents();
         this.tela = tela;
         this.controller = new CadastroController();
+    }
+
+    private void limpar() {
+        this.jTextFieldLogin.setText("");
+        this.jTextFieldSenha.setText("");
     }
 
     /**
@@ -102,7 +95,11 @@ public class CadastroUsuario extends javax.swing.JPanel {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         
-        this.controller.inserirNovoUsuario(this.jTextFieldLogin.getText(), this.jTextFieldSenha.getText());
+        try {
+            this.controller.inserirNovoUsuario(this.jTextFieldLogin.getText(), this.jTextFieldSenha.getText());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar contatos!");
+        }
         
         this.limpar();
         
@@ -124,9 +121,4 @@ public class CadastroUsuario extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldLogin;
     private javax.swing.JTextField jTextFieldSenha;
     // End of variables declaration//GEN-END:variables
-
-    private void limpar() {
-        this.jTextFieldLogin.setText("");
-        this.jTextFieldSenha.setText("");
-    }
 }

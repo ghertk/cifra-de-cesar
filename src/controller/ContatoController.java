@@ -1,6 +1,6 @@
 package controller;
 
-import DAO.ContatoDAO;
+import dao.ContatoDAO;
 import cifradecesar.CifraDeCesar;
 import java.util.ArrayList;
 import java.util.List;

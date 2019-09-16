@@ -1,7 +1,7 @@
 package principal;
 
-import Connection.Conexao;
-import DAO.UsuarioDAO;
+import connection.Conexao;
+import dao.UsuarioDAO;
 import cifradecesar.CifraDeCesar;
 import java.util.List;
 import model.Usuario;

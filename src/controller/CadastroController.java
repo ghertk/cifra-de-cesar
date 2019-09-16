@@ -1,10 +1,7 @@
 package controller;
 
-import DAO.UsuarioDAO;
+import dao.UsuarioDAO;
 import cifradecesar.CifraDeCesar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import model.Usuario;
 
 public class CadastroController {
@@ -18,20 +15,15 @@ public class CadastroController {
         this.limpar();
     }
 
-    public void inserirNovoUsuario(String login, String senha) {
-        try {
-            String loginCriptografado = this.cifraDeCesar.criptografar(login);
-            String senhaCriptografada = this.cifraDeCesar.criptografar(senha);
+    public void inserirNovoUsuario(String login, String senha) throws Exception {
+        String loginCriptografado = this.cifraDeCesar.criptografar(login);
+        String senhaCriptografada = this.cifraDeCesar.criptografar(senha);
 
-            Usuario usuario = new Usuario();
-            usuario.setLogin(loginCriptografado);
-            usuario.setSenha(senhaCriptografada);
+        Usuario usuario = new Usuario();
+        usuario.setLogin(loginCriptografado);
+        usuario.setSenha(senhaCriptografada);
 
-            this.dao.inserir(usuario);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao Inserir novo Usuário!");
-            ex.printStackTrace();
-        }
+        this.dao.inserir(usuario);
     }
 
     private void limpar() {

@@ -1,12 +1,9 @@
 package view;
 
-import DAO.ContatoDAO;
 import cifradecesar.CifraDeCesar;
 import controller.ContatoController;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Contato;
 
 public class ListarContatos extends javax.swing.JPanel {
 
@@ -39,8 +36,7 @@ public class ListarContatos extends javax.swing.JPanel {
             }
             this.jTableContato.setModel(this.tableModel);
         } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println("ErroCarrge");
+            JOptionPane.showMessageDialog(null, "Erro ao buscar contatos!");
         }
     }
 
@@ -58,8 +54,7 @@ public class ListarContatos extends javax.swing.JPanel {
             }
             this.jTableContato.setModel(this.tableModel);
         } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println("ErroCarrge");
+            JOptionPane.showMessageDialog(null, "Erro ao buscar contatos!");
         }
         
         this.jTableContato.setModel(tableModel);
