@@ -45,8 +45,11 @@ public class Principal {
 
            
           CifraDeCesar cdc = new CifraDeCesar();
-          System.out.println(cdc.criptografar("valter"));
-          System.out.println(cdc.criptografar("ghert"));
+          System.out.println("valter ==> " + cdc.criptografar("valter"));
+          System.out.println("ghert ==> " + cdc.criptografar("ghert"));
+          System.out.println("teste ==> " + cdc.criptografar("teste"));
+          System.out.println("darlan ==> " + cdc.criptografar("darlan"));
+          System.out.println("testevalter ==> " + cdc.criptografar("testevalter"));
     }
 
 }

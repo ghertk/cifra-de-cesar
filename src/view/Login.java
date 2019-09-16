@@ -79,7 +79,7 @@ public class Login extends javax.swing.JPanel {
             this.tela.irPara("ListarContatos");
         } else {
             JOptionPane.showMessageDialog(null, "Usuário ou Senha invalidos!");
-            System.out.println("Erro");
+//            System.out.println("Erro");
         }
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
