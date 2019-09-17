@@ -104,10 +104,14 @@ public class CadastroUsuario extends javax.swing.JPanel {
         
         this.controller.inserirNovoUsuario(this.jTextFieldLogin.getText(), this.jTextFieldSenha.getText());
         
+        this.limpar();
+        
         tela.irPara("ListarContatos");
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
+        this.limpar();
+        
         tela.irPara("ListarContatos");
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
@@ -120,4 +124,9 @@ public class CadastroUsuario extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldLogin;
     private javax.swing.JTextField jTextFieldSenha;
     // End of variables declaration//GEN-END:variables
+
+    private void limpar() {
+        this.jTextFieldLogin.setText("");
+        this.jTextFieldSenha.setText("");
+    }
 }

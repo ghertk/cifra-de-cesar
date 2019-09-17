@@ -90,8 +90,6 @@ public class UsuarioDAO {
                 usuario.setSenha(rs.getString("senha"));
             }
 
-//            System.out.println(usuario.toString());
-
             stmt.close();
             rs.close();
 
@@ -119,7 +117,6 @@ public class UsuarioDAO {
                 usuario.setId(rs.getLong("id"));
                 usuario.setLogin(rs.getString("login"));
                 usuario.setSenha(rs.getString("senha"));
-//                System.out.println(usuario.toString());
             }
 
             stmt.close();
@@ -139,8 +136,8 @@ public class UsuarioDAO {
             StringBuilder sql = new StringBuilder("")
                     .append(" SELECT id, login, senha FROM usuario;");
 
-            Connection conexao = Conexao.obterConexao();
-            PreparedStatement stmt = conexao.prepareStatement(sql.toString());
+            this.conexao = Conexao.obterConexao();
+            PreparedStatement stmt = this.conexao.prepareStatement(sql.toString());
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -149,7 +146,6 @@ public class UsuarioDAO {
                 usuario.setLogin(rs.getString("login"));
                 usuario.setSenha(rs.getString("senha"));
                 lista.add(usuario);
-//                System.out.println(usuario.toString());
             }
 
             stmt.close();
@@ -157,7 +153,10 @@ public class UsuarioDAO {
 
         } catch (Exception e) {
             throw e;
+        } finally {
+            this.conexao.close();
         }
+            
         return lista;
     }
 
