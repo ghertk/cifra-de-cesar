@@ -1,12 +1,68 @@
 package view;
 
+import DAO.ContatoDAO;
+import cifradecesar.CifraDeCesar;
+import controller.ContatoController;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import model.Contato;
+
 public class ListarContatos extends javax.swing.JPanel {
 
     private Tela tela;
+    private CifraDeCesar cifraDeCesar;
+    private ContatoController contatoController;
+    private DefaultTableModel tableModel;
 
     public ListarContatos(Tela tela) {
         initComponents();
         this.tela = tela;
+        this.contatoController = new ContatoController();
+        this.tableModel = new DefaultTableModel();
+        this.cifraDeCesar = new CifraDeCesar();
+        this.initTableContato();
+    }
+
+    private void initTableContato() {
+        
+        try {
+            this.tableModel = new DefaultTableModel();
+            
+            this.tableModel.addColumn("Id");
+            this.tableModel.addColumn("Nome");
+            this.tableModel.addColumn("Email");
+            this.tableModel.addColumn("Celular");
+            this.tableModel.addColumn("Cidade");
+            for (Object[] contato: this.contatoController.buscarUsuarios()) {
+                this.tableModel.addRow(contato);
+            }
+            this.jTableContato.setModel(this.tableModel);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("ErroCarrge");
+        }
+    }
+
+    void atualizarTabela() {
+        try {
+            this.tableModel = new DefaultTableModel();
+            
+            this.tableModel.addColumn("Id");
+            this.tableModel.addColumn("Nome");
+            this.tableModel.addColumn("Email");
+            this.tableModel.addColumn("Celular");
+            this.tableModel.addColumn("Cidade");
+            for (Object[] contato: this.contatoController.buscarUsuarios()) {
+                this.tableModel.addRow(contato);
+            }
+            this.jTableContato.setModel(this.tableModel);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("ErroCarrge");
+        }
+        
+        this.jTableContato.setModel(tableModel);
     }
 
     @SuppressWarnings("unchecked")
@@ -14,11 +70,11 @@ public class ListarContatos extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableContato = new javax.swing.JTable();
         jButtonNovoContato = new javax.swing.JButton();
         jButtonCadastroUsuario = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableContato.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -29,7 +85,7 @@ public class ListarContatos extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableContato);
 
         jButtonNovoContato.setText("Cadastrar novo contato");
         jButtonNovoContato.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +140,6 @@ public class ListarContatos extends javax.swing.JPanel {
     private javax.swing.JButton jButtonCadastroUsuario;
     private javax.swing.JButton jButtonNovoContato;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableContato;
     // End of variables declaration//GEN-END:variables
 }
